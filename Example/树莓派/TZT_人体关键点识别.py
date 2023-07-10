@@ -137,4 +137,4 @@ while cv2.waitKey(1):  # 循环不断运行
     if result:
         draw_person(frame, result)  # 绘制结果到图像
 
-    cv2.imshow("POSE", frame)  # 显示运行结
+    # cv2.imshow("POSE", frame)  # 显示运行结
