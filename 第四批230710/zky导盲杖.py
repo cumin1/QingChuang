@@ -46,6 +46,7 @@ def speech(text):
         time.sleep(0.2)
         play(path)
 
+
 cap = cv2.VideoCapture("3.mp4")
 lst = 0
 while True:
