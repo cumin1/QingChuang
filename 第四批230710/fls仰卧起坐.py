@@ -88,7 +88,7 @@ def speech(text):
     if not isinstance(result, dict):
         with open(path, 'wb') as f:
             f.write(result)
-        time.sleep(0.2)
+        time.sleep(0.1)
         play(path)
 
 
@@ -120,7 +120,9 @@ def check(arr):
             return False
     return True
 
+a = 0
 def update(frame):
+    global a
     global result
     result = analysis_pose(frame, token)  # 通过百度云获取结果
     print(result)  # 输出结果
@@ -138,12 +140,14 @@ def update(frame):
     re = bp['right_eye']
 
     print(dis(lw, th), dis(rw, th))
-    high = 300
+
     if dis(th,lh,lk):
         print("姿势标准")
         if (1.2<(lh["x"]-lk["x"])/(lh["y"]-lk["y"])<1.5) and 1.3<(th["x"] - lh["x"])/(lh["y"]-th["y"]) <1.6:
+            a += 1
             result+=1
-            speech(str(result))
+            if a%3 == 0:
+                speech(str(result))
 
     else:
         print("动作不标准")
